@@ -916,8 +916,8 @@ _matrix_from_colorimetry (GstVideoColorMatrix matrix)
                                  1.5748, -0.468124, 0.0     };
 #if GST_CHECK_VERSION(1, 6, 0)
   static const float bt2020[] = { 1.0,     1.0,      1.0,
-                                  0.0,     0.571353, 1.8814,
-                                  1.4746,  0.164553, 0.0     };
+                                  0.0,    -0.164553, 1.8814,
+                                  1.4746, -0.571353, 0.0     };
 #endif
 #if 0
   /* Original transformation from the clutter-gst 2.0/1.6 days.
