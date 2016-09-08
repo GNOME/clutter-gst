@@ -201,5 +201,5 @@ nodist_typelibs_DATA = $(BUILT_GIRSOURCES:.gir=.typelib)
 		--includedir=`$(PKG_CONFIG) --variable=girdir gstreamer-pbutils-1.0` \
 		$(INTROSPECTION_COMPILER_OPTS) $< -o $(builddir)/$(@F)
 
-CLEANFILES += $(BUILT_GIRSOURCES) $(typelibs_DATA)
+CLEANFILES += $(BUILT_GIRSOURCES) $(nodist_typelibs_DATA)
 endif
