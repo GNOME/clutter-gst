@@ -2554,7 +2554,6 @@ clutter_gst_video_sink_is_ready (ClutterGstVideoSink *sink)
  *
  * Since: 3.0
  */
-
 ClutterGstFrame *
 clutter_gst_video_sink_get_frame (ClutterGstVideoSink *sink)
 {
@@ -2592,6 +2591,8 @@ clutter_gst_video_sink_get_frame (ClutterGstVideoSink *sink)
     }
   else if (priv->frame_dirty)
     {
+      clutter_gst_video_resolution_from_video_info (&priv->clt_frame->resolution,
+                                                    &priv->info);
       clutter_gst_video_sink_attach_frame (sink, priv->clt_frame->pipeline);
     }
 
