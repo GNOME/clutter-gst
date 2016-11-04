@@ -36,6 +36,8 @@
 #include "config.h"
 #endif
 
+#include <string.h>
+
 #include "clutter-gst-content.h"
 #include "clutter-gst-private.h"
 #include "clutter-gst-marshal.h"
@@ -146,24 +148,19 @@ update_frame (ClutterGstContent *self,
 {
   ClutterGstContentPrivate *priv = self->priv;
   ClutterGstFrame *old_frame;
+  ClutterGstVideoResolution old_res = { 0, }, new_res = { 0, };
 
   old_frame = priv->current_frame;
   priv->current_frame = g_boxed_copy (CLUTTER_GST_TYPE_FRAME, new_frame);
 
   if (old_frame)
-    {
-      new_frame->resolution.par_n = old_frame->resolution.par_n;
-      new_frame->resolution.par_d = old_frame->resolution.par_d;
-    }
+    old_res = old_frame->resolution;
+  if (new_frame)
+    new_res = new_frame->resolution;
 
-  if (!old_frame ||
-      (new_frame->resolution.width != old_frame->resolution.width ||
-       new_frame->resolution.height != old_frame->resolution.height))
-    {
-      g_signal_emit (self, signals[SIZE_CHANGE], 0,
-                     new_frame->resolution.width,
-                     new_frame->resolution.height);
-    }
+  if (memcmp(&old_res, &new_res, sizeof(old_res)) != 0)
+    g_signal_emit (self, signals[SIZE_CHANGE], 0,
+                   new_res.width, new_res.height);
 
   if (old_frame)
     g_boxed_free (CLUTTER_GST_TYPE_FRAME, old_frame);
