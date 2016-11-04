@@ -186,9 +186,7 @@ _new_frame_from_pipeline (ClutterGstVideoSink *sink,
                           ClutterGstContent   *self)
 {
   update_frame (self, clutter_gst_video_sink_get_frame (sink));
-
-  if (CLUTTER_GST_CONTENT_GET_CLASS (self)->has_painting_content (self))
-    clutter_content_invalidate (CLUTTER_CONTENT (self));
+  clutter_content_invalidate (CLUTTER_CONTENT (self));
 }
 
 static void
@@ -196,9 +194,7 @@ _new_overlays_from_pipeline (ClutterGstVideoSink *sink,
                              ClutterGstContent   *self)
 {
   update_overlays (self, clutter_gst_video_sink_get_overlays (sink));
-
-  if (CLUTTER_GST_CONTENT_GET_CLASS (self)->has_painting_content (self))
-    clutter_content_invalidate (CLUTTER_CONTENT (self));
+  clutter_content_invalidate (CLUTTER_CONTENT (self));
 }
 
 static void
@@ -298,9 +294,7 @@ content_set_frame (ClutterGstContent *self,
     }
 
   update_frame (self, frame);
-
-  if (CLUTTER_GST_CONTENT_GET_CLASS (self)->has_painting_content (self))
-    clutter_content_invalidate (CLUTTER_CONTENT (self));
+  clutter_content_invalidate (CLUTTER_CONTENT (self));
 }
 
 static gboolean
