@@ -43,6 +43,8 @@
 #include "config.h"
 #endif
 
+#include <string.h>
+
 #include "clutter-gst-enum-types.h"
 #include "clutter-gst-marshal.h"
 #include "clutter-gst-player.h"
@@ -388,19 +390,18 @@ clutter_gst_player_update_frame (ClutterGstPlayer *player,
                                  ClutterGstFrame  *new_frame)
 {
   ClutterGstFrame *old_frame = *frame;
+  ClutterGstVideoResolution old_res = { 0, }, new_res = { 0, };
 
   *frame = g_boxed_copy (CLUTTER_GST_TYPE_FRAME, new_frame);
 
-  if (old_frame == NULL ||
-      new_frame->resolution.width != old_frame->resolution.width ||
-      new_frame->resolution.height != old_frame->resolution.height ||
-      new_frame->resolution.par_n != old_frame->resolution.par_n ||
-      new_frame->resolution.par_d != old_frame->resolution.par_d)
-    {
-      g_signal_emit (player, signals[SIZE_CHANGE], 0,
-                     new_frame->resolution.width,
-                     new_frame->resolution.height);
-    }
+  if (old_frame)
+    old_res = old_frame->resolution;
+  if (new_frame)
+    new_res = new_frame->resolution;
+
+  if (memcmp(&old_res, &new_res, sizeof(old_res)) != 0)
+    g_signal_emit (player, signals[SIZE_CHANGE], 0,
+                   new_res.width, new_res.height);
 
   if (old_frame)
     g_boxed_free (CLUTTER_GST_TYPE_FRAME, old_frame);
