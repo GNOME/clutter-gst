@@ -2627,6 +2627,8 @@ clutter_gst_video_sink_get_pipeline (ClutterGstVideoSink *sink)
 {
   ClutterGstVideoSinkPrivate *priv;
 
+  priv = sink->priv;
+
   g_return_val_if_fail (CLUTTER_GST_IS_VIDEO_SINK (sink), NULL);
 
   if (clutter_gst_video_sink_get_frame (sink) == NULL)
