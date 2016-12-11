@@ -2212,6 +2212,12 @@ clutter_gst_video_sink_dispose (GObject *object)
       priv->tablev = NULL;
     }
 
+  if (priv->renderers)
+    {
+      g_slist_free (priv->renderers);
+      priv->renderers = NULL;
+    }
+
   G_OBJECT_CLASS (clutter_gst_video_sink_parent_class)->dispose (object);
 }
 
