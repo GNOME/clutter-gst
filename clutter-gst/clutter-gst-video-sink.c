@@ -2222,6 +2222,12 @@ clutter_gst_video_sink_dispose (GObject *object)
       priv->renderers = NULL;
     }
 
+  if (priv->overlays)
+    {
+      g_boxed_free (CLUTTER_GST_TYPE_OVERLAYS, priv->overlays);
+      priv->overlays = NULL;
+    }
+
   G_OBJECT_CLASS (clutter_gst_video_sink_parent_class)->dispose (object);
 }
 
