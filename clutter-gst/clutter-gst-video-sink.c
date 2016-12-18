@@ -2003,6 +2003,7 @@ clutter_gst_source_dispatch (GSource *source,
   ClutterGstVideoSinkPrivate *priv = gst_source->sink->priv;
   GstBuffer *buffer;
   gboolean pipeline_ready = FALSE;
+  gboolean caps_parsed;
 
   g_mutex_lock (&gst_source->buffer_lock);
 
@@ -2012,7 +2013,10 @@ clutter_gst_source_dispatch (GSource *source,
         gst_pad_get_current_caps (GST_BASE_SINK_PAD ((GST_BASE_SINK
                                                       (gst_source->sink))));
 
-      if (!clutter_gst_video_sink_parse_caps (caps, gst_source->sink, TRUE))
+      caps_parsed = clutter_gst_video_sink_parse_caps (caps, gst_source->sink, TRUE);
+      gst_caps_unref (caps);
+
+      if (!caps_parsed)
         goto negotiation_fail;
 
       gst_source->has_new_caps = FALSE;
