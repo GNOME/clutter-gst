@@ -2140,9 +2140,6 @@ clutter_gst_video_sink_init (ClutterGstVideoSink *sink)
   priv->tableu = g_new0 (guint8, 256 * 256);
   priv->tablev = g_new0 (guint8, 256 * 256);
 
-  priv->ctx = clutter_gst_get_cogl_context ();
-  priv->renderers = clutter_gst_build_renderers_list (priv->ctx);
-  priv->caps = clutter_gst_build_caps (priv->renderers);
   priv->overlays = clutter_gst_overlays_new ();
 }
 
@@ -2244,6 +2241,10 @@ clutter_gst_video_sink_start (GstBaseSink *base_sink)
   ClutterGstVideoSinkPrivate *priv = sink->priv;
 
   GST_INFO_OBJECT (sink, "Start");
+
+  priv->ctx = clutter_gst_get_cogl_context ();
+  priv->renderers = clutter_gst_build_renderers_list (priv->ctx);
+  priv->caps = clutter_gst_build_caps (priv->renderers);
 
   priv->source = clutter_gst_source_new (sink);
   g_source_attach ((GSource *) priv->source, NULL);
