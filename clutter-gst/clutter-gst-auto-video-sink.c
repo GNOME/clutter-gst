@@ -79,8 +79,6 @@ clutter_gst_auto_video_sink_class_init (ClutterGstAutoVideoSink3Class *klass)
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GstElementClass *eklass = GST_ELEMENT_CLASS (klass);
 
-  _clutter_init ();
-
   GST_DEBUG_CATEGORY_INIT (clutter_gst_auto_video_sink_debug,
                            "clutterautovideosink",
                            0,
@@ -162,9 +160,6 @@ static void
 clutter_gst_auto_video_sink_reset (ClutterGstAutoVideoSink3 *sink)
 {
   GstPad *targetpad;
-
-  if (_clutter_initialized != CLUTTER_INIT_SUCCESS)
-    return;
 
   /* Remove any existing element */
   clutter_gst_auto_video_sink_clear_kid (sink);
@@ -254,7 +249,7 @@ clutter_gst_auto_video_sink_change_state (GstElement     *element,
   switch (transition) {
   case GST_STATE_CHANGE_NULL_TO_READY:
     if (_clutter_initialized != CLUTTER_INIT_SUCCESS)
-      return GST_STATE_CHANGE_FAILURE;
+      _clutter_init ();
 
     if (!sink->content)
       {
