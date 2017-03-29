@@ -1,3 +1,19 @@
+clutter-gst 3.0.24 (29/03/2016)
+===============================================================================
+
+List of changes
+
+ o Enable inspection of gstreamer plugin without connecting to display
+   servers
+
+ o Fix issue with RGBx/BGRx formats not showing
+
+ o Fix memory leaks
+
+Many Thanks to:
+
+   Fabrice Bellet
+
 clutter-gst 3.0.22 (06/12/2016)
 ===============================================================================
 
