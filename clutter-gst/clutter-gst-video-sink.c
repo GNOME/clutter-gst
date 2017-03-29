@@ -1902,20 +1902,20 @@ clutter_gst_video_sink_parse_caps (GstCaps *caps,
       format = CLUTTER_GST_NV12;
       break;
     case GST_VIDEO_FORMAT_RGB:
+    case GST_VIDEO_FORMAT_RGBx:
       format = CLUTTER_GST_RGB24;
       bgr = FALSE;
       break;
     case GST_VIDEO_FORMAT_BGR:
+    case GST_VIDEO_FORMAT_BGRx:
       format = CLUTTER_GST_RGB24;
       bgr = TRUE;
       break;
     case GST_VIDEO_FORMAT_RGBA:
-    case GST_VIDEO_FORMAT_RGBx:
       format = CLUTTER_GST_RGB32;
       bgr = FALSE;
       break;
     case GST_VIDEO_FORMAT_BGRA:
-    case GST_VIDEO_FORMAT_BGRx:
       format = CLUTTER_GST_RGB32;
       bgr = TRUE;
       break;
