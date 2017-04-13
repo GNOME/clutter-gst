@@ -796,6 +796,9 @@ static const gchar *color_balance_shader =
   "  return clutter_gst_yuv_to_rgb (corrected_yuv);\n"
   "}\n";
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+
 static void
 clutter_gst_video_sink_setup_balance (ClutterGstVideoSink *sink,
                                       CoglPipeline *pipeline)
@@ -889,6 +892,8 @@ clutter_gst_video_sink_setup_balance (ClutterGstVideoSink *sink,
       priv->video_start = priv->custom_start;
     }
 }
+
+#pragma GCC diagnostic pop
 
 /* YUV <-> RGB conversions */
 
