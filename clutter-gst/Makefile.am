@@ -109,21 +109,21 @@ plugin_source_c = 			\
 	clutter-gst-auto-video-sink.h	\
 	$(NULL)
 
-libgstclutter_@CLUTTER_GST_MAJORMINOR@_la_SOURCES =	\
-	$(plugin_source_c)      \
+libcluttergst@CLUTTER_GST_MAJOR_VERSION@_la_SOURCES = \
+	$(plugin_source_c) \
 	$(NULL)
 
-plugin_LTLIBRARIES = libgstclutter-@CLUTTER_GST_MAJORMINOR@.la
+plugin_LTLIBRARIES = libcluttergst@CLUTTER_GST_MAJOR_VERSION@.la
 
-libgstclutter_@CLUTTER_GST_MAJORMINOR@_la_LIBADD  = \
+libcluttergst@CLUTTER_GST_MAJOR_VERSION@_la_LIBADD = \
 	$(PLUGIN_LIBS) \
 	$(HW_LIBS) \
 	$(LIBM) \
 	libclutter-gst-@CLUTTER_GST_MAJORMINOR@.la
-libgstclutter_@CLUTTER_GST_MAJORMINOR@_la_LDFLAGS =	\
-	$(GL_LDFLAGS)		\
-	-module -avoid-version	\
-	-no-undefined		\
+libcluttergst@CLUTTER_GST_MAJOR_VERSION@_la_LDFLAGS = \
+	$(GL_LDFLAGS) \
+	-module -avoid-version \
+	-no-undefined \
 	$(NULL)
 
 #

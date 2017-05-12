@@ -37,6 +37,9 @@
 
 #include "clutter-gst-auto-video-sink.h"
 #include "clutter-gst-video-sink.h"
+#include "clutter-gst-version.h"
+
+#define CLUTTER_GST_PLUGIN_NAME cluttergst
 
 /* entry point to initialize the plug-in
   * initialize the plug-in itself
@@ -65,7 +68,7 @@ plugin_init (GstPlugin *plugin)
 
 GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
                    GST_VERSION_MINOR,
-                   clutter-gst3,
+                   G_PASTE (CLUTTER_GST_PLUGIN_NAME, CLUTTER_GST_MAJOR_VERSION),
                    "Elements to render to ClutterGst actors",
                    plugin_init,
                    VERSION,
