@@ -1,3 +1,17 @@
+clutter-gst 3.0.26 (10/03/2018)
+===============================================================================
+
+List of changes
+
+ o Fix compilation error with -Werror=format-nonliteral
+
+ o Rename plugin to avoid dash in the name
+
+Many Thanks to:
+
+   Bastien Nocera
+   Emmanuele Bassi
+
 clutter-gst 3.0.24 (29/03/2016)
 ===============================================================================
 
