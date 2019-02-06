@@ -90,6 +90,16 @@
 
   <release>
     <Version>
+      <name>3.0.27 Release</name>
+      <created>2019-02-06</created>
+      <branch>clutter-gst-3.0</branch>
+      <revision>3.0.27</revision>
+      <file-release rdf:resource="http://download.gnome.org/sources/clutter-gst/3.0/clutter-gst-3.0.27.tar.xz" />
+    </Version>
+  </release>
+
+  <release>
+    <Version>
       <name>3.0.26 Release</name>
       <created>2018-03-10</created>
       <branch>clutter-gst-3.0</branch>
