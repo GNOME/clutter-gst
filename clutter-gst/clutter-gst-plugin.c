@@ -65,7 +65,7 @@ plugin_init (GstPlugin *plugin)
 
 GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
                    GST_VERSION_MINOR,
-                   clutter-gst3,
+                   clutter_gst3,
                    "Elements to render to ClutterGst actors",
                    plugin_init,
                    VERSION,
