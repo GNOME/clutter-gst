@@ -24,7 +24,7 @@ source_h = 					\
 	$(srcdir)/clutter-gst.h			\
 	$(srcdir)/clutter-gst-types.h		\
 	$(srcdir)/clutter-gst-util.h		\
-	$(srcdir)/clutter-gst-version.h		\
+	$(builddir)/clutter-gst-version.h	\
 	$(srcdir)/clutter-gst-camera.h		\
 	$(srcdir)/clutter-gst-camera-manager.h	\
 	$(srcdir)/clutter-gst-camera-device.h	\
@@ -38,14 +38,14 @@ source_h = 					\
 
 source_priv_h =					\
 	$(srcdir)/clutter-gst-debug.h		\
-	$(srcdir)/clutter-gst-marshal.h		\
+	$(builddir)/clutter-gst-marshal.h	\
 	$(srcdir)/clutter-gst-private.h		\
 	$(NULL)
 
 source_c = 					\
 	$(srcdir)/clutter-gst-debug.c		\
 	$(srcdir)/clutter-gst-types.c		\
-	$(srcdir)/clutter-gst-marshal.c		\
+	$(builddir)/clutter-gst-marshal.c	\
 	$(srcdir)/clutter-gst-player.c		\
 	$(srcdir)/clutter-gst-camera.c		\
 	$(srcdir)/clutter-gst-camera-manager.c	\
@@ -69,6 +69,7 @@ libclutter_gst_@CLUTTER_GST_MAJORMINOR@_la_SOURCES =	\
 
 INCLUDES =					\
 	-I$(top_srcdir)				\
+	-I$(top_builddir)			\
 	$(NULL)
 
 AM_CPPFLAGS =					\
