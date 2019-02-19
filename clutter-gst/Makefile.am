@@ -146,7 +146,7 @@ ClutterGst-@CLUTTER_GST_API_VERSION@.gir: $(INTROSPECTION_SCANNER) libclutter-gs
 		$(AM_CPPFLAGS) \
 		-D GST_USE_UNSTABLE_API \
 		--quiet --warn-all \
-		--add-include-path=$(srcdir) --add-include=path=. \
+		--add-include-path=$(srcdir) --add-include-path=. \
 		--c-include="clutter-gst/clutter-gst.h" \
 		--include=GObject-2.0 \
 		--include=Cogl-1.0 \
